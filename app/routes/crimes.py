@@ -1,10 +1,6 @@
-from flask import Blueprint, jsonify
-from ..models.crime import CrimeIncident
-
-crimes_bp = Blueprint('crimes', __name__)
-
 @crimes_bp.route('/api/crimes', methods=['GET'])
 def get_crimes():
+    print("Fetching crime data...")
     crimes = CrimeIncident.query.all()
     return jsonify([{
         'latitude': crime.latitude,
